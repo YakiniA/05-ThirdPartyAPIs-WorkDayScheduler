@@ -32,8 +32,127 @@
     </header>
     <div class="container">
       <!-- Timeblocks go here -->
+     
     <script type="text/javascript">
      $("#currentDay").text(moment().format('MMMM Do YYYY, h:mm:ss a'));
+     var j=9;
+     var time = 1;
+    
+          for(var i=0 ; i<9; i++){
+          // var divRow = $("<div>");
+          // divRow.attr("class", "row");
+          // var divCol = $("<div>");
+          // divCol.attr("class", "col-md");
+          // var label = $("<label>");
+          // label.attr("for", "inputVal");
+          // var input = $("<input>");
+          // input.attr("type", "text");
+          // input.attr("class" , "form-control");
+          // input.attr("id", "inputVal");
+          // input.attr("class", "textarea");
+          // divCol.append(label);
+          // divCol.append(input);
+          // divCol.append("<hr>");
+          // divRow.append(divCol);
+           var form = $("<form>");
+           var divRow = $("<div>");
+          //  divRow.attr("class", "form-group");
+           var label = $("<label>");
+           label.attr("for", "inputVal");
+           label.attr("index",i);
+          //  label.attr("class", "hour");
+
+
+          var input = $("<textarea>");
+          //  input.attr("type", "text");
+          
+           input.attr("id", "inputVal");
+           input.attr("index" , i);
+           input.attr("name", "inputVal");
+           input.attr("rows", "2");
+           input.attr("cols", "120");
+
+          var k =i+j;
+          
+          var hour =moment().hour(); ;
+          console.log(hour);
+    
+          
+              if(k>12){
+                label.text(time+" PM");
+                time++
+                 
+              }else{
+                label.text(k+" AM");
+              }
+             
+              if(k>hour){
+                     input.attr("class" , "form-control future");
+              }else if(k<hour){
+                input.attr("class" , "form-control past");
+              }else{
+                input.attr("class" , "form-control present");
+              }
+        
+
+           var button = $("<button>");
+           button.attr("type", "button");
+           button.attr("class", "saveBtn");
+
+           divRow.append(label);
+           divRow.append(input);
+           divRow.append(button);
+           form.append(divRow);
+          
+          
+           $(".container").append(divRow);
+     }
+
+     $(".saveBtn").click(function(event){
+      
+      //  var inputValue =  $("#inputVal");
+      //  console.log(inputVal);
+
+       var val = $(this).siblings("textarea").val();
+       var valtime = $(this).siblings("label").text();
+       console.log(val);
+       console.log(valtime);
+       saveDetails(val, valtime);
+     })
+
+    function saveDetails(text, time){
+      var schedulerText;
+      var schedulerTime;
+     if(localStorage.getItem("schedulerText") && localStorage.getItem("schedulerTime")){
+      schedulerText = JSON.parse(localStorage.getItem("schedulerText"));
+      schedulerTime = JSON.parse(localStorage.getItem("schedulerTime"));  
+    }else{
+      schedulerText = [];
+      schedulerTime = [];
+    }
+      
+    schedulerText.push(text);
+    schedulerTime.push(time);
+
+        localStorage.setItem("schedulerText", JSON.stringify(schedulerText));
+        localStorage.setItem("schedulerTime", JSON.stringify(schedulerTime));
+    
+
+    var finalSechedulerText = JSON.parse(localStorage.getItem("schedulerText"));
+    var finalSchedulerTime = JSON.parse(localStorage.getItem("schedulerTime"));
+  
+    for(var values= 0; values<finalSechedulerText.length; values++){
+      finalSchedulerTime[value];
+
+    }
+    //        var highscoreValue1 = document.createElement("p");
+    //        highscoreValue1.setAttribute("style","margin:16px 0; font-size:18px;");
+    //        highscoreValue1. textContent = finalInitials[values]+ " - " +finalScore[values]; 
+    //        highscoreDisplay.prepend(highscoreValue1);
+    //  }
+    
+    // highscoreTitle.append(highscoreDisplay);
+    }
     </script>
     </div>
 
