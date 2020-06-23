@@ -1,4 +1,5 @@
 function WorkScheduler() {
+
     $(document).ready(function () {
       var currentDay = moment().format('MMMM Do YYYY, h:mm:ss a');
       var row;
@@ -11,14 +12,20 @@ function WorkScheduler() {
       
       for (i = 0; i < hours.length; i++) {
         var row = $("<div>").addClass("row");
-        var hourCol = $("<text-area>").text(hours[i]).addClass("hour");
+        var hourCol = $("<textarea>").text(hours[i]).addClass("hour");
         var inputCol = $("<input>").attr("placeholder", "Enter Your Notes here").addClass("inputText time-block");
         var saveBtn = $("<button>").addClass("btn btn-primary saveBtn").text("save");
         $(row).append(hourCol).append(inputCol).append(saveBtn);
-        $("#calendar").append(row);
+        $(".container").append(row);
       }
     });
 }
 
 WorkScheduler();
      
+
+// $(".saveBtn").on("click", function (event) {
+//   event.preventDefault();
+//   var toDoInput1 = $(this).val().trim();
+//   localStorage.setItem("toDo1", (toDoInput1));
+// });
