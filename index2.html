@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="Develop/style.css" />
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+  <title>Work Day Scheduler</title>
+</head>
+
+<body>
+  <header class="jumbotron">
+    <h1 class="display-3">Work Day Scheduler</h1>
+    <p class="lead">A simple calendar app for scheduling your work day</p>
+    <p id="currentDay" class="lead"></p>
+  </header>
+  <div class="container">
+    <!-- Timeblocks go here -->
+
+    <script type="text/javascript">
+      $("#currentDay").text(moment().format('MMMM Do YYYY, h:mm:ss a'));
+      var j = 9;
+      var time = 1;
+      var input;
+      var schedulerText;
+      var schedulerIndex;
+
+      for (var i = 0; i < 9; i++) {
+
+        // var form = $("<form>");
+        var divRow = $("<div>");
+        //  divRow.attr("class", "form-group");
+        var label = $("<label>");
+        label.attr("for", "inputVal");
+        label.attr("data-value", i);
+
+        input = $("<textarea>");
+        //  input.attr("type", "text");
+
+        input.attr("data-value", i);
+        //  input.attr("index" , i);
+        input.attr("name", "inputVal");
+        input.attr("rows", "2");
+        input.attr("cols", "120");
+
+        var k = i + j;
+
+        var hour = moment().hour();;
+        console.log(hour);
+
+
+        if (k > 12) {
+          label.text(time + " PM");
+          time++
+
+        } else {
+          label.text(k + " AM");
+        }
+
+        if (k > hour) {
+          input.attr("class", "form-control future");
+        } else if (k < hour) {
+          input.attr("class", "form-control past");
+        } else {
+          input.attr("class", "form-control present");
+        }
+
+
+        var button = $("<button>");
+        button.attr("type", "button");
+        button.attr("class", "saveBtn");
+
+        divRow.append(label);
+        divRow.append(input);
+        divRow.append(button);
+        // form.append(divRow);
+
+        $(".container").append(divRow);
+
+      }
+      displayItem();
+
+ 
+      $(".saveBtn").click(function (event) {
+
+        //  var inputValue =  $("#inputVal");
+        //  console.log(inputVal);
+
+        var val = $(this).siblings("textarea").val();
+        var valIndex = $(this).siblings("label").attr("data-value");
+        console.log("Val" + val);
+        console.log("valIndex" + valIndex);
+        saveDetails(val, valIndex);
+      })
+
+      function saveDetails(text, index) {
+
+        if (localStorage.getItem("schedulerText") && localStorage.getItem("schedulerIndex")) {
+          schedulerText = JSON.parse(localStorage.getItem("schedulerText"));
+          schedulerIndex = JSON.parse(localStorage.getItem("schedulerIndex"));
+        } else {
+          schedulerText = [];
+          schedulerIndex = [];
+        }
+
+        schedulerText.push(text);
+        schedulerIndex.push(index);
+
+        localStorage.setItem("schedulerText", JSON.stringify(schedulerText));
+        localStorage.setItem("schedulerIndex", JSON.stringify(schedulerIndex));
+        displayItem();
+      }
+
+      function displayItem() {
+        console.log("I am inside dispalyitem");
+        var finalSchedulerText = JSON.parse(localStorage.getItem("schedulerText"));
+        var finalSchedulerIndex = JSON.parse(localStorage.getItem("schedulerIndex"));
+        console.log(finalSchedulerText);
+        console.log(finalSchedulerIndex);
+        if (finalSchedulerIndex != null) {
+          for (var i = 0; i < finalSchedulerIndex.length; i++) {
+            // debugger
+            console.log("FinalSchedulerIndexValue" + finalSchedulerIndex[i]);
+            
+            console.log("SchedulerIndex" + input);
+            // var inputFinal = input.attr("id", finalSchedulerIndex[i]).val(finalSechedulerText[i]);
+            // var inputFinal = input.attr("data-value", finalSchedulerIndex[i]).text(finalSchedulerText[i]);
+            $('textarea').each(function(){
+                  console.log("Im insidetextarea function");
+                  var value = $("textarea").attr("data-value");
+                  var text = $("textarea").attr("data-value").text();
+                  console.log(value);
+                  console.log(text);
+                    if(value === finalSchedulerIndex[i]){
+                      // var inputFinal = value.text(finalSchedulerText[i]);
+                      text.text(finalSchedulerText[i]);
+                      console.log("inputFinal" +inputFinal);
+                    } 
+          });
+          // $(".container").append(divRow);
+        }
+        }
+      }
+
+
+// $('textarea').each(function(){
+// var value = input.val();
+//  if(value === finalSchedulerText[values]){
+//    var inputFinal = $('textarea').text(finalSchedulerText[values]);
+//  } 
+// })
+
+              //  console.log("Input Final " +inputFinal);
+              //  divRow.append(inputFinal);
+
+   // }
+
+
+    </script>
+  </div>
+
+
+</body>
+
+</html>
