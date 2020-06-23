@@ -38,32 +38,18 @@
      var j=9;
      var time = 1;
      var input;
-    
+     var schedulerText;
+      var schedulerIndex;
+  
           for(var i=0 ; i<9; i++){
-          // var divRow = $("<div>");
-          // divRow.attr("class", "row");
-          // var divCol = $("<div>");
-          // divCol.attr("class", "col-md");
-          // var label = $("<label>");
-          // label.attr("for", "inputVal");
-          // var input = $("<input>");
-          // input.attr("type", "text");
-          // input.attr("class" , "form-control");
-          // input.attr("id", "inputVal");
-          // input.attr("class", "textarea");
-          // divCol.append(label);
-          // divCol.append(input);
-          // divCol.append("<hr>");
-          // divRow.append(divCol);
+         
            var form = $("<form>");
            var divRow = $("<div>");
           //  divRow.attr("class", "form-group");
            var label = $("<label>");
            label.attr("for", "inputVal");
            label.attr("index",i);
-          //  label.attr("class", "hour");
-
-
+         
           input = $("<textarea>");
           //  input.attr("type", "text");
           
@@ -104,10 +90,11 @@
            divRow.append(input);
            divRow.append(button);
            form.append(divRow);
-          
-          
+   
            $(".container").append(divRow);
+          
      }
+     displayItem();
 
      $(".saveBtn").click(function(event){
       
@@ -122,49 +109,44 @@
      })
 
     function saveDetails(text, index){
-      var schedulerText;
-      var schedulerIndex;
-     if(localStorage.getItem("schedulerText") && localStorage.getItem("schedulerIndex")){
-      schedulerText = JSON.parse(localStorage.getItem("schedulerText"));
-      schedulerIndex = JSON.parse(localStorage.getItem("schedulerIndex"));  
-    }else{
-      schedulerText = [];
-      schedulerIndex = [];
-    }
-      
+                
+        if(localStorage.getItem("schedulerText") && localStorage.getItem("schedulerIndex")){
+                schedulerText = JSON.parse(localStorage.getItem("schedulerText"));
+                schedulerIndex = JSON.parse(localStorage.getItem("schedulerIndex"));  
+            }else{
+                schedulerText = [];
+                schedulerIndex = [];
+            }  
+
     schedulerText.push(text);
     schedulerIndex.push(index);
 
         localStorage.setItem("schedulerText", JSON.stringify(schedulerText));
         localStorage.setItem("schedulerIndex", JSON.stringify(schedulerIndex));
-    
+        displayItem();
+    }
 
-    var finalSechedulerText = JSON.parse(localStorage.getItem("schedulerText"));
-    var finalSchedulerIndex = JSON.parse(localStorage.getItem("schedulerIndex"));
+    function displayItem(){
+       var finalSechedulerText = JSON.parse(localStorage.getItem("schedulerText"));
+       var finalSchedulerIndex = JSON.parse(localStorage.getItem("schedulerIndex"));
   
-    
-    for(var values= 0; values<finalSchedulerIndex.length; values++){
-    //   var index = $(this).val();
-    //  finalSchedulerIndex[values];
-     console.log("FinalSchedulerIndexValue" +finalSchedulerIndex[values]);
-     input =  $("#finalSchedulerIndex[values]");
-     console.log("SchedulerIndex" +input);
-     var inputFinal = input.attr("id", finalSchedulerIndex[values]).val(finalSechedulerText[values]);
-     console.log("Input Final " +inputFinal);
-     divRow.append(inputFinal);
-     form.append(divRow);
-    }
+  if(finalSchedulerIndex!=null){
+       for(var values= 0; values<finalSchedulerIndex.length; values++){
+                debugger
+                console.log("FinalSchedulerIndexValue" +finalSchedulerIndex[values]);
+                input =  $("#finalSchedulerIndex[values]");
+                console.log("SchedulerIndex" +input);
+                // var inputFinal = input.attr("id", finalSchedulerIndex[values]).val(finalSechedulerText[values]);
+                var inputFinal = input.attr("id", finalSchedulerIndex[values]).val(finalSechedulerText[values]);
 
-    
-
-    //        var highscoreValue1 = document.createElement("p");
-    //        highscoreValue1.setAttribute("style","margin:16px 0; font-size:18px;");
-    //        highscoreValue1. textContent = finalInitials[values]+ " - " +finalScore[values]; 
-    //        highscoreDisplay.prepend(highscoreValue1);
-    //  }
-    
-    // highscoreTitle.append(highscoreDisplay);
+                console.log("Input Final " +inputFinal);
+                divRow.append(inputFinal);
+              
     }
+    $(".container").append(divRow);
+    }
+    }
+    
     </script>
     </div>
 
