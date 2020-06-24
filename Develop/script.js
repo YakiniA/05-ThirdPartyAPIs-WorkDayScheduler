@@ -32,30 +32,26 @@ function WorkScheduler() {
             
       var row = $("<div>").addClass("row");
       // var row1 = $("#row");
-      var saveBtn = $("<button>").addClass("btn btn-primary saveBtn").text("save");
-      $(row).append(hourCol).append(inputCol).append(saveBtn);
+      var saveButton = $("<button>").addClass("saveBtn").text("save");
+      $(row).append(hourCol).append(inputCol).append(saveButton);
       $(".container").append(row);
 
       }
-    });
+
+      $(".saveBtn").on("click",function (event) {
+      
+        event.preventDefault();
+        console.log("Inside Save");
+        var val = $(this).siblings("input").val();
+        var valIndex = $(this).siblings("textarea").attr("data-value");
+        console.log("Val" + val);
+        console.log("valIndex" + valIndex);
+        saveDetails(val, valIndex);
+  });
+});
 }
 
 WorkScheduler();
-     
-
-// $(".saveBtn").on("click", function (event) {
-//   event.preventDefault();
-//   var toDoInput1 = $(this).val().trim();
-//   localStorage.setItem("toDo1", (toDoInput1));
-// });
-
-$(".saveBtn").on("click", function (event) {
-      var val = $(this).siblings(".inputText").val();
-      var valIndex = $(this).siblings("label").attr("data-value");
-      console.log("Val" + val);
-      console.log("valIndex" + valIndex);
-      saveDetails(val, valIndex);
-})
 
 function saveDetails(text, index) {
 
@@ -73,4 +69,37 @@ function saveDetails(text, index) {
       localStorage.setItem("schedulerText", JSON.stringify(schedulerText));
       localStorage.setItem("schedulerIndex", JSON.stringify(schedulerIndex));
       displayItem();
-      }
+  }
+
+  function displayItem() {
+    console.log("I am inside dispalyitem");
+    var finalSchedulerText = JSON.parse(localStorage.getItem("schedulerText"));
+    var finalSchedulerIndex = JSON.parse(localStorage.getItem("schedulerIndex"));
+    console.log(finalSchedulerText);
+    console.log(finalSchedulerIndex);
+    if (finalSchedulerIndex != null) {
+      for (var i = 0; i < finalSchedulerIndex.length; i++) {
+        // debugger
+        console.log("FinalSchedulerIndexValue" + finalSchedulerIndex[i]);
+      
+        // var inputFinal = input.attr("id", finalSchedulerIndex[i]).val(finalSechedulerText[i]);
+        // var inputFinal = input.attr("data-value", finalSchedulerIndex[i]).text(finalSchedulerText[i]);
+        $('textarea').each(function(){
+              console.log("Im insidetextarea function");
+              var value = $("textarea").attr("data-value");
+              var text = $("textarea").attr("data-value").text();
+              console.log(value);
+              console.log(text);
+                if(value === finalSchedulerIndex[i]){
+                  // var inputFinal = value.text(finalSchedulerText[i]);
+                  text.text(finalSchedulerText[i]);
+                  console.log("inputFinal" +inputFinal);
+                } 
+      });
+      // $(".container").append(divRow);
+    }
+    }
+  }
+
+
+   
