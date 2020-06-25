@@ -5,19 +5,22 @@ function WorkScheduler() {
       var row;
       var timeCol;
   
+     //  Setting Todays date
       $("#currentDay").text(currentDay);
 
       var hours = ["9 AM.", "10 AM.", "11 AM.", "12 PM.", "1 PM.", "2 PM.", "3 PM.", "4 PM.",
         "5 PM."];
       var k=9;
+
+     //  Loop through the hours to set the parameters
       for (i = 0; i < hours.length; i++) {
       
         var hourCol = $("<textarea>").text(hours[i]).attr("data-value" , i).addClass("hour");
         var inputCol = $("<input>").attr("placeholder", "Enter Your Notes here").attr("data-value" , i).addClass("time-block");
    
         var hour = moment().hour();;
-        console.log(hour);
 
+     //    Setting past, present, future for the input tag
         if(k!=null && k<18){
         if (k > hour) {
           inputCol.addClass("future");
@@ -28,20 +31,18 @@ function WorkScheduler() {
         }
         k++;
       }
-
      
       inputCol.addClass("inputVal-"+i);
       var row = $("<div>").addClass("row");
-      // var row1 = $("#row");
       var saveBtnVal = "saveBtn-"+i ;
       var saveButton = $("<button>").addClass("btn btn-primary saveBtn").text("save");
       saveButton.addClass(saveBtnVal);
       $(row).append(hourCol).append(inputCol).append(saveButton);
       $(".container").append(row);
-
       }
 
-      $(".saveBtn").on("click",function (event) {
+     //  On Clicking "Save Button" this function is called
+       $(".saveBtn").on("click",function (event) {
       
         event.preventDefault();
         console.log("Inside Save");
