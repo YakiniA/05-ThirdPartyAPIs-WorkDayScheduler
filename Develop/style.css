@@ -32,7 +32,7 @@ input{
   white-space: pre-wrap;
 }
 
-/* Changed the width to 700 px */
+/* Changed the width to 60% */
 .time-block{
   text-align: center;
   border-radius: 15px;
@@ -53,20 +53,19 @@ input{
   padding: 10px;
 }
 
-/* Replaced the color with black for past, present, future to improve visibility */
 .past {
   background-color: #d3d3d3;
-  color: rgb(20, 20, 20);
+  color:white;
 }
 
 .present {
   background-color: #ff6961;
-  color:  rgb(20, 20, 20);
+  color:  white;
 }
 
 .future {
   background-color: #77dd77;
-  color:  rgb(20, 20, 20);
+  color:  white;
 }
 
 .saveBtn {
@@ -83,7 +82,7 @@ input{
   transition: all .3s ease-in-out;
 }
 
-
+/* Included media queries to make it responsive */
 @media screen and (max-width: 360px) {
   .time-block{
       width:50%   

@@ -2,6 +2,8 @@ function WorkScheduler() {
 
     $(document).ready(function () {
       var currentDay = moment().format('MMMM Do YYYY, h:mm:ss a');
+     //  var tomorrow = moment().add(1,'days').startOf('day').toString();
+     //  console.log(tomorrow);
       var row;
       var timeCol;
   
