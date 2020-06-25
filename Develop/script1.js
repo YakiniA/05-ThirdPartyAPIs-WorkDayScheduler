@@ -56,16 +56,6 @@ function WorkScheduler() {
 
       }
 
-      var input0 = $(".inputVal-0");
-      var input1 = $(".inputVal-1");
-      var input2 = $(".inputVal-2");
-      var input3 = $(".inputVal-3");
-      var input4 = $(".inputVal-4");
-      var input5 = $(".inputVal-5");
-      var input6 = $(".inputVal-6");
-      var input7 = $(".inputVal-7");
-      var input8 = $(".inputVal-8");
-
       $(".saveBtn").on("click",function (event) {
       
         event.preventDefault();
@@ -75,34 +65,23 @@ function WorkScheduler() {
 
         debugger
         if(valIndex===0){
-            {
             var input0 =val;
             localStorage.setItem("Text0",(input0));
-            }
-           
-          }
-            else if(valIndex===1){
-           {
+           } else if(valIndex===1){
             var input1=val;
             localStorage.setItem("Text1",(input1));
-      
-            }
+           } 
           
-          }
-        
-       
-              
   });
 
   var value0 = localStorage.getItem("Text0");
   //   input0 = $(".inputVal-0");
   $(".inputVal-0").val(value0);
 
-    var value1 = localStorage.getItem("Text1");
+  var value1 = localStorage.getItem("Text1");
   //   input1 = $(".inputVal-1");
   $(".inputVal-1").val(value1);
 
-        console.log("I am inside dispalyitem");
 });
 }
         
