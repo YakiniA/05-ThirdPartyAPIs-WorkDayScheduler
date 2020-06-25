@@ -49,33 +49,43 @@ function WorkScheduler() {
         var val = $(this).siblings("input").val().trim();
         var valIndex = parseInt($(this).siblings("textarea").attr("data-value"));
 
-        if(valIndex===0){
-                var input0 =val;
-                localStorage.setItem("Text0",input0);
-           } else if(valIndex===1){
-                var input1=val;
-                localStorage.setItem("Text1",input1);
-           } else if(valIndex===2){
-                var input2=val;
-                localStorage.setItem("Text2",input2);
-           } else if(valIndex===3){
-                var input3=val;
-                localStorage.setItem("Text3",input3);
-           }else if(valIndex===4){
-                var input4=val;
-                localStorage.setItem("Text4",input4);
-           }else if(valIndex===5){
-                var input5=val;
-                localStorage.setItem("Text5",input5);
-           }else if(valIndex===6){
-                var input6=val;
-                localStorage.setItem("Text6",input6);
-           }else if(valIndex===7){
-                var input7=val;
-                localStorage.setItem("Text7",input7);
-           }else if(valIndex===8){
-                var input8=val;
-                localStorage.setItem("Text8",input8);
+           switch(valIndex){
+                case 0:
+                    var input0 =val;
+                    localStorage.setItem("Text0",input0);
+                    break;
+                case 1:
+                    var input1=val;
+                    localStorage.setItem("Text1",input1);
+                    break;
+                case 2:
+                    var input2=val;
+                    localStorage.setItem("Text2",input2);
+                    break;
+                case 3:
+                    var input3=val;
+                    localStorage.setItem("Text3",input3);
+                    break;
+                case 4:
+                    var input4=val;
+                    localStorage.setItem("Text4",input4);
+                    break;
+                case 5:
+                    var input5=val;
+                    localStorage.setItem("Text5",input5);
+                    break;
+                case 6:
+                    var input6=val;
+                    localStorage.setItem("Text6",input6);
+                    break;
+                case 7:
+                    var input7=val;
+                    localStorage.setItem("Text7",input7);
+                    break;
+                case 8:
+                    var input8=val;
+                    localStorage.setItem("Text8",input8);
+
            }
           
   });
