@@ -34,7 +34,7 @@ function WorkScheduler() {
       var row = $("<div>").addClass("row");
       // var row1 = $("#row");
       var saveBtnVal = "saveBtn-"+i ;
-      var saveButton = $("<button>").addClass("saveBtn").text("save");
+      var saveButton = $("<button>").addClass("btn btn-primary saveBtn").text("save");
       saveButton.addClass(saveBtnVal);
       $(row).append(hourCol).append(inputCol).append(saveButton);
       $(".container").append(row);

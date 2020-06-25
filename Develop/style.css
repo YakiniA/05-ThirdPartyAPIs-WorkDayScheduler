@@ -32,6 +32,7 @@ input{
   white-space: pre-wrap;
 }
 
+/* Changed the width to 700 px */
 .time-block{
   text-align: center;
   border-radius: 15px;
@@ -48,22 +49,23 @@ input{
   background-color: #ffffff;
   color: #000000;
   border-top: 1px dashed #000000;
-  width:100px;
+  width:80px;
 }
 
+/* Replaced the color with black for past, present, future to improve visibility */
 .past {
   background-color: #d3d3d3;
-  color: white;
+  color: rgb(20, 20, 20);
 }
 
 .present {
   background-color: #ff6961;
-  color: white;
+  color:  rgb(20, 20, 20);
 }
 
 .future {
   background-color: #77dd77;
-  color: white;
+  color:  rgb(20, 20, 20);
 }
 
 .saveBtn {
@@ -78,4 +80,24 @@ input{
 .saveBtn i:hover {
   font-size: 20px;
   transition: all .3s ease-in-out;
+}
+
+@media screen and (max-width:991px) {
+  .timeblock{
+      width:861px;
+  }
+
+  .row{
+    height:65px;
+  }
+}
+
+@media screen and (max-width:375px) {
+  .timeblock{
+      width:200px;
+  }
+
+  .row{
+    height:45px;
+  }
 }
