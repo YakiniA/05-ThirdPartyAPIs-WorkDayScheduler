@@ -83,23 +83,11 @@ input{
   transition: all .3s ease-in-out;
 }
 
-/* @media screen and (max-width:991px) {
+
+@media screen and (max-width: 360px) {
   .timeblock{
-      width:861px;
-      margin: 0 auto;
+      width:50%   
   }
 
-  .row{
-    height:65px;
-  }
-}
+} 
 
-@media screen and (max-width:375px) {
-  .timeblock{
-      width:200px;
-  }
-
-  .row{
-    height:45px;
-  }
-} */
