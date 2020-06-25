@@ -3,15 +3,15 @@ var schedulerText;
       var val = "";
       var valIndex = "";
       var  inputCol ="";
-      var input0;
-      var input1;
-      var input2;
-      var input3;
-      var input4;
-      var input5;
-      var input6;
-      var input7;
-      var input8;
+    //   var input0;
+    //   var input1;
+    //   var input2;
+    //   var input3;
+    //   var input4;
+    //   var input5;
+    //   var input6;
+    //   var input7;
+    //   var input8;
 
 function WorkScheduler() {
 
@@ -72,50 +72,43 @@ function WorkScheduler() {
         console.log("Inside Save");
         val = $(this).siblings("input").val().trim();
         valIndex = parseInt($(this).siblings("textarea").attr("data-value"));
-       
+
+        debugger
+        if(valIndex===0){
+            {
+            var input0 =val;
+            localStorage.setItem("Text0",(input0));
+            }
+           
+          }
+            else if(valIndex===1){
+           {
+            var input1=val;
+            localStorage.setItem("Text1",(input1));
+      
+            }
+          
+          }
         
-        console.log("Val" + val);
-        console.log("valIndex" + valIndex);
-        saveDetails(val, valIndex);
+       
+              
   });
-});
-}
 
-
-function saveDetails(text, index) {
-
-      if(index===0){
-      {
-      var input0 =text;
-      localStorage.setItem("Text0",(input0));
-      }
-     
-    }
-      else if(index===1){
-     {
-      var input1=text;
-      localStorage.setItem("Text1",(input1));
-
-      }
-    
-    }
-  
-    var value0 = localStorage.getItem("Text0");
-     input0 = $(".inputVal-0");
-    input0.val(value0);
+  var value0 = localStorage.getItem("Text0");
+  //   input0 = $(".inputVal-0");
+  $(".inputVal-0").val(value0);
 
     var value1 = localStorage.getItem("Text1");
-     input1 = $(".inputVal-1");
-    input1.val(value1);
+  //   input1 = $(".inputVal-1");
+  $(".inputVal-1").val(value1);
 
         console.log("I am inside dispalyitem");
-        
-              }
-
+});
+}
         
 WorkScheduler();
 
-saveDetails(val, valIndex);
+
       
   
 
