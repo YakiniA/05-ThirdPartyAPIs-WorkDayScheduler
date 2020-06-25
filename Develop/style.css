@@ -85,9 +85,8 @@ input{
 
 
 @media screen and (max-width: 360px) {
-  .timeblock{
+  .time-block{
       width:50%   
   }
-
 } 
 
