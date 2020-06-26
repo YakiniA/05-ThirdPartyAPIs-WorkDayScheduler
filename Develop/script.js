@@ -2,11 +2,7 @@ function WorkScheduler() {
 
     $(document).ready(function () {
       var currentDay = moment().format('MMMM Do YYYY, h:mm:ss a');
-     //  var tomorrow = moment().add(1,'days').startOf('day').toString();
-     //  console.log(tomorrow);
-      var row;
-      var timeCol;
-  
+   
      //  Setting Todays date
       $("#currentDay").text(currentDay);
 
@@ -49,47 +45,50 @@ function WorkScheduler() {
         event.preventDefault();
         console.log("Inside Save");
         var val = $(this).siblings("input").val().trim();
+        if(val ===""){
+          alert("Please enter an event to save");
+        }
         var valIndex = parseInt($(this).siblings("textarea").attr("data-value"));
 
-           switch(valIndex){
-                case 0:
-                    var input0 =val;
-                    localStorage.setItem("Text0",input0);
-                    break;
-                case 1:
-                    var input1=val;
-                    localStorage.setItem("Text1",input1);
-                    break;
-                case 2:
-                    var input2=val;
-                    localStorage.setItem("Text2",input2);
-                    break;
-                case 3:
-                    var input3=val;
-                    localStorage.setItem("Text3",input3);
-                    break;
-                case 4:
-                    var input4=val;
-                    localStorage.setItem("Text4",input4);
-                    break;
-                case 5:
-                    var input5=val;
-                    localStorage.setItem("Text5",input5);
-                    break;
-                case 6:
-                    var input6=val;
-                    localStorage.setItem("Text6",input6);
-                    break;
-                case 7:
-                    var input7=val;
-                    localStorage.setItem("Text7",input7);
-                    break;
-                case 8:
-                    var input8=val;
-                    localStorage.setItem("Text8",input8);
-
-           }
-          
+        if(val!=""){
+          switch(valIndex){
+              case 0:
+                  var input0 =val;
+                  localStorage.setItem("Text0",input0);
+                  break;
+              case 1:
+                  var input1=val;
+                  localStorage.setItem("Text1",input1);
+                  break;
+              case 2:
+                  var input2=val;
+                  localStorage.setItem("Text2",input2);
+                  break;
+              case 3:
+                  var input3=val;
+                  localStorage.setItem("Text3",input3);
+                  break;
+              case 4:
+                  var input4=val;
+                  localStorage.setItem("Text4",input4);
+                  break;
+              case 5:
+                  var input5=val;
+                  localStorage.setItem("Text5",input5);
+                  break;
+              case 6:
+                  var input6=val;
+                  localStorage.setItem("Text6",input6);
+                  break;
+              case 7:
+                  var input7=val;
+                  localStorage.setItem("Text7",input7);
+                  break;
+              case 8:
+                  var input8=val;
+                  localStorage.setItem("Text8",input8);
+            }
+          } 
   });
 
   var value0 = localStorage.getItem("Text0");
